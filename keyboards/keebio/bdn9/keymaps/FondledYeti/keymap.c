@@ -15,7 +15,7 @@ enum encoder_names {
 
 // Tap Dance declarations
 enum {
-    TD_TAB_ENTR
+    TD_TAB_ENTR,
 };
 
 
@@ -54,12 +54,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
         | Knob 1: Vol Dn/Up |           | Knob 2: Page Dn/Up |
         | Press: Transparent|    BL+    | Press: TO 0        |
-        | Brightness Up     |    BL-    | BL Toggle          |
+        | Brightness Up     |    BL-    | RGB Toggle         |
         | Brightness Down   | RGB Hue + | RGB Mode +         |
      */
     [2] = LAYOUT(
         _______, BL_INC, TO(0),
-        KC_BRIU, BL_DEC, BL_TOGG,
+        KC_BRIU, BL_DEC, RGB_TOG,
         KC_BRID, RGB_HUI, RGB_MOD
     )
 };
