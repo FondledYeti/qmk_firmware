@@ -21,7 +21,7 @@ enum {
 
 // Tap Dance definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
-    // Tap once for Escape, twice for Caps Lock
+    // Tap once for Tab, twice for Enter Lock
     [TD_TAB_ENTR] = ACTION_TAP_DANCE_DOUBLE(KC_TAB, KC_ENTER),
 };
 
@@ -33,31 +33,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         | Previous          | Up   | Next               |
         | Left              | Down | Right              |
      */
-	[0] = LAYOUT(KC_MPLY, KC_HOME, TO(1), KC_MPRV, KC_UP, KC_MNXT, KC_LEFT, KC_DOWN, KC_RGHT),
-    // /*
-    //     | Knob 1: Vol Dn/Up |           | Knob 2: Page Dn/Up |
-    //     | Press: Play       |  Page Up  | Press: TO 2        |
-    //     | Browser Search    | Page Down | Browser Refresh    |
-    //     | Browser Back      |   Home    | Browser Forward    |
-    //  */	
-    // [1] = LAYOUT(KC_MPLY, KC_PGUP, TO(2), KC_WSCH, KC_PGDN, KC_WREF, KC_WBAK, KC_HOME, KC_WFWD),
-   
+	[0] = LAYOUT(
+        KC_MPLY, KC_HOME, TO(1),
+        KC_MPRV, KC_UP, KC_MNXT,
+        KC_LEFT, KC_DOWN, KC_RGHT
+    ),
    /*
         | Knob 1: Vol Dn/Up |           | Knob 2: Page Dn/Up |
-        | Press: Play       |  Escape   | Press: TO 2        |
-        | Tab/Enter         |    Up     | Browser Refresh    |
-        | Browser Back      |   Down    | Browser Forward    |
-     */	
-    [1] = LAYOUT(KC_MPLY, KC_ESC, TO(2), TD(TD_TAB_ENTR), KC_UP, KC_WREF, KC_WBAK, KC_DOWN, KC_WFWD),
+        | Press: Transparent|  Escape   | Press: TO 2        |
+        | Tab/Enter         |Transparent| Browser Refresh    |
+        | Browser Back      |Transparent| Browser Forward    |
+     */
+    [1] = LAYOUT(
+        _______, KC_ESC, TO(2),
+        TD(TD_TAB_ENTR), _______, KC_WREF,
+        KC_WBAK, _______, KC_WFWD
+    ),
 
 
     /*
         | Knob 1: Vol Dn/Up |           | Knob 2: Page Dn/Up |
-        | Press: BL Breathe |    BL+    | Press: TO 0        |
+        | Press: Transparent|    BL+    | Press: TO 0        |
         | Brightness Up     |    BL-    | BL Toggle          |
-        | Brightness Down   | RGB Mode- | RGB Mode +         |
-     */	
-    [2] = LAYOUT(BL_BRTG, BL_INC, TO(0), KC_BRIU, BL_DEC, BL_TOGG, KC_BRID, RGB_RMOD, RGB_MOD)
+        | Brightness Down   | RGB Hue + | RGB Mode +         |
+     */
+    [2] = LAYOUT(
+        _______, BL_INC, TO(0),
+        KC_BRIU, BL_DEC, BL_TOGG,
+        KC_BRID, RGB_HUI, RGB_MOD
+    )
 };
 
 
